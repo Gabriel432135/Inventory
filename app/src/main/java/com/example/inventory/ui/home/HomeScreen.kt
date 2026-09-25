@@ -42,7 +42,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -53,6 +52,7 @@ import com.example.inventory.data.Item
 import com.example.inventory.ui.item.formatedPrice
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
+import com.example.inventory.ui.theme.dimens
 
 object HomeDestination : NavigationDestination {
     override val route = "home"
@@ -84,7 +84,7 @@ fun HomeScreen(
             FloatingActionButton(
                 onClick = navigateToItemEntry,
                 shape = MaterialTheme.shapes.medium,
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))
+                modifier = Modifier.padding(MaterialTheme.dimens.large)
             ) {
                 Icon(
                     imageVector = Icons.Default.Add,
@@ -125,7 +125,7 @@ private fun HomeBody(
                 itemList = itemList,
                 onItemClick = { onItemClick(it.id) },
                 contentPadding = contentPadding,
-                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+                modifier = Modifier.padding(horizontal = MaterialTheme.dimens.small)
             )
         }
     }
@@ -145,7 +145,7 @@ private fun InventoryList(
         items(items = itemList, key = { it.id }) { item ->
             InventoryItem(item = item,
                 modifier = Modifier
-                    .padding(dimensionResource(id = R.dimen.padding_small))
+                    .padding(MaterialTheme.dimens.small)
                     .clickable { onItemClick(item) })
         }
     }
@@ -160,8 +160,8 @@ private fun InventoryItem(
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
     ) {
         Column(
-            modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_small))
+            modifier = Modifier.padding(MaterialTheme.dimens.large),
+            verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.small)
         ) {
             Row(
                 modifier = Modifier.fillMaxWidth()

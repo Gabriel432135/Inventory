@@ -48,7 +48,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -57,6 +56,7 @@ import com.example.inventory.R
 import com.example.inventory.data.Item
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
+import com.example.inventory.ui.theme.dimens
 
 object ItemDetailsDestination : NavigationDestination {
     override val route = "item_details"
@@ -83,7 +83,7 @@ fun ItemDetailsScreen(
             FloatingActionButton(
                 onClick = { navigateToEditItem(0) },
                 shape = MaterialTheme.shapes.medium,
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))
+                modifier = Modifier.padding(MaterialTheme.dimens.large)
 
             ) {
                 Icon(
@@ -116,8 +116,8 @@ private fun ItemDetailsBody(
     modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        modifier = modifier.padding(MaterialTheme.dimens.medium),
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.medium)
     ) {
         var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
 
@@ -147,7 +147,7 @@ private fun ItemDetailsBody(
                     onDelete()
                 },
                 onDeleteCancel = { deleteConfirmationRequired = false },
-                modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+                modifier = Modifier.padding(MaterialTheme.dimens.medium)
             )
         }
     }
@@ -167,30 +167,30 @@ fun ItemDetails(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(dimensionResource(id = R.dimen.padding_medium)),
+                .padding(MaterialTheme.dimens.medium),
             verticalArrangement = Arrangement.spacedBy(
-                dimensionResource(id = R.dimen.padding_medium)
+                MaterialTheme.dimens.medium
             )
         ) {
             ItemDetailsRow(
                 labelResID = R.string.item,
                 itemDetail = item.name,
                 modifier = Modifier.padding(
-                    horizontal = dimensionResource(id = R.dimen.padding_medium)
+                    horizontal = MaterialTheme.dimens.medium
                 )
             )
             ItemDetailsRow(
                 labelResID = R.string.quantity_in_stock,
                 itemDetail = item.quantity.toString(),
                 modifier = Modifier.padding(
-                    horizontal = dimensionResource(id = R.dimen.padding_medium)
+                    horizontal = MaterialTheme.dimens.medium
                 )
             )
             ItemDetailsRow(
                 labelResID = R.string.price,
                 itemDetail = item.formatedPrice(),
                 modifier = Modifier.padding(
-                    horizontal = dimensionResource(id = R.dimen.padding_medium)
+                    horizontal = MaterialTheme.dimens.medium
                 )
             )
         }

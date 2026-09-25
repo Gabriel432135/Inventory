@@ -35,7 +35,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLayoutDirection
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,6 +44,7 @@ import com.example.inventory.R
 import com.example.inventory.ui.AppViewModelProvider
 import com.example.inventory.ui.navigation.NavigationDestination
 import com.example.inventory.ui.theme.InventoryTheme
+import com.example.inventory.ui.theme.dimens
 import java.util.Currency
 import java.util.Locale
 
@@ -94,8 +94,8 @@ fun ItemEntryBody(
     modifier: Modifier = Modifier
 ) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
-        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.large),
+        modifier = modifier.padding(MaterialTheme.dimens.medium)
         ) {
         ItemInputForm(
             itemDetails = itemUiState.itemDetails,
@@ -122,7 +122,7 @@ fun ItemInputForm(
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+        verticalArrangement = Arrangement.spacedBy(MaterialTheme.dimens.medium)
     ) {
         OutlinedTextField(
             value = itemDetails.name,
@@ -169,7 +169,7 @@ fun ItemInputForm(
         if (enabled) {
             Text(
                 text = stringResource(R.string.required_fields),
-                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.padding_medium))
+                modifier = Modifier.padding(start = MaterialTheme.dimens.medium)
             )
         }
     }
