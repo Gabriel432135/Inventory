@@ -35,7 +35,7 @@ object AppViewModelProvider {
     val Factory = viewModelFactory {
         // Initializer for ItemEditViewModel
         initializer {
-            ItemEditViewModel(
+            ItemEditViewModel(this.inventoryApplication().container.itemsRepository,
                 this.createSavedStateHandle()
             )
         }
