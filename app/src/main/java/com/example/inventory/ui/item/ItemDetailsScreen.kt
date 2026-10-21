@@ -45,6 +45,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -103,7 +104,10 @@ fun ItemDetailsScreen(
         ItemDetailsBody(
             itemDetailsUiState = uiState,
             onSellItem = itemDetailViewModel::reduceQuantityByOne,
-            onDelete = { },
+            onDelete = {
+                itemDetailViewModel.deleteItem()
+                navigateBack()
+            },
             modifier = Modifier
                 .padding(
                     start = innerPadding.calculateStartPadding(LocalLayoutDirection.current),

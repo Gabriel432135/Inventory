@@ -54,6 +54,10 @@ class ItemDetailsViewModel(val itemsRepository: ItemsRepository, savedStateHandl
             itemsRepository.updateItem(currentItem.copy(quantity = currentItem.quantity - 1))
         }
     }
+
+    fun deleteItem() = viewModelScope.launch {
+        itemsRepository.deleteItem(uiState.value.itemDetails.toItem())
+    }
 }
 
 /**
